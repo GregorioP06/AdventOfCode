@@ -1,13 +1,12 @@
 const fs = require("node:fs");
-let input = "";
+let input;
 try {
-    const data = fs.readFileSync("input.txt", "utf8");
-    if (data) input += data;
+    input = fs.readFileSync("input.txt", "utf8");
 } catch {
-    const data = fs.readFileSync("2025/dayX/input.txt", "utf8");
-    if (data) input += data;
+    input = fs.readFileSync("2025/day3/test.txt", "utf8");
 }
 input = input.split("\n");
+input = input.map((x) => x.replace("\r", "")).filter((x) => x);
 
 function main(input_data) {
     // write program here
