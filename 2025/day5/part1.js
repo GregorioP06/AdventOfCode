@@ -9,12 +9,11 @@ input = input.split("\n");
 input = input.map((x) => x.replace("\r", "")).filter((x) => x);
 
 function main(input_data) {
-    const raw_ranges = input_data.filter((x) => x.includes("-"));
-    const ranges = [];
-    for (const range of raw_ranges) {
-        const [start, end] = range.split("-", 2);
-        ranges.push({ start: parseInt(start), end: parseInt(end) });
-    }
+    let ranges = input_data.filter((x) => x.includes("-"));
+    ranges = ranges.map((raw_range) => {
+        const [start, end] = raw_range.split("-", 2);
+        return { start: parseInt(start), end: parseInt(end) };
+    });
     const ingredients_ids = input_data
         .filter((x) => !x.includes("-"))
         .map((x) => parseInt(x));
